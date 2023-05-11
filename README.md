@@ -28,8 +28,9 @@ We will use Docker instead </br>
 If confronted with options choose the one from docker.io
 
 ### Run the image
-```podman run --name mongo -d -p 27017:27017```
+```podman run --name mongo -d -p 27017:27017 mongo```
 
+### ------- DOWNLOAD Mongosh or MongoDB Compass ---------
 ### Download the Mongosh client from official website
 ```wget https://downloads.mongodb.com/compass/mongosh-1.8.2-linux-x64.tgz```
 
@@ -38,3 +39,8 @@ If confronted with options choose the one from docker.io
 
 ### Run the Mongo client
 ```cd mongosh-1.8.2-linux-x64/bin && ./mongosh```
+
+### Download MongoDB Compass
+If you desire a GUI client then MongoDB Compass can be directly downloaded from official website. </br>
+Select RedHat and download the RPM package and install it
+https://www.mongodb.com/try/download/compass
