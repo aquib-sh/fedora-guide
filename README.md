@@ -10,5 +10,31 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ## Update system after editing /etc/fstab
 ```
-sytemctl daemon-reload && systemctl restart local-fs.target
+systemctl daemon-reload && systemctl restart local-fs.target
 ```
+
+## Installing MongoDB server and client
+This can be a real pain, </br>Mongo has knowingly or unknowing made it extremely hard to install it on Linux </br>
+We will use Docker instead </br>
+
+ ### Install podman</br>
+
+```sudo dnf install podman```
+
+### Pull the mongo image from docker.io</br>
+
+```podman pull mongo```
+
+If confronted with options choose the one from docker.io
+
+### Run the image
+```podman run --name mongo -d -p 27017:27017```
+
+### Download the Mongosh client from official website
+```wget https://downloads.mongodb.com/compass/mongosh-1.8.2-linux-x64.tgz```
+
+### Untar the file
+```tar -xvzf mongosh-1.8.2-linux-x64.tgz```
+
+### Run the Mongo client
+```cd mongosh-1.8.2-linux-x64/bin && ./mongosh```
