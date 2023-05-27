@@ -30,6 +30,9 @@ If confronted with options choose the one from docker.io
 ### Run the image
 ```podman run --name mongo -d -p 27017:27017 mongo```
 
+Next time if you wish to run the container you would have to use
+```podman start mongo```
+
 ### ------- DOWNLOAD Mongosh or MongoDB Compass ---------
 ### Download the Mongosh client from official website
 ```wget https://downloads.mongodb.com/compass/mongosh-1.8.2-linux-x64.tgz```
