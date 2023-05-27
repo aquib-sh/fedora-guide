@@ -19,29 +19,43 @@ We will use Docker instead </br>
 
  ### Install podman</br>
 
-```sudo dnf install podman```
+```
+sudo dnf install podman
+```
 
 ### Pull the mongo image from docker.io</br>
 
-```podman pull mongo```
+```
+podman pull mongo
+```
 
 If confronted with options choose the one from docker.io
 
 ### Run the image
-```podman run --name mongo -d -p 27017:27017 mongo```
+```
+podman run --name mongo -d -p 27017:27017 mongo
+```
 
 Next time if you wish to run the container you would have to use
-```podman start mongo```
+```
+podman start mongo
+```
 
 ### ------- DOWNLOAD Mongosh or MongoDB Compass ---------
 ### Download the Mongosh client from official website
-```wget https://downloads.mongodb.com/compass/mongosh-1.8.2-linux-x64.tgz```
+```
+wget https://downloads.mongodb.com/compass/mongosh-1.8.2-linux-x64.tgz
+```
 
 ### Untar the file
-```tar -xvzf mongosh-1.8.2-linux-x64.tgz```
+```
+tar -xvzf mongosh-1.8.2-linux-x64.tgz
+```
 
 ### Run the Mongo client
-```cd mongosh-1.8.2-linux-x64/bin && ./mongosh```
+```
+cd mongosh-1.8.2-linux-x64/bin && ./mongosh
+```
 
 ### Download MongoDB Compass
 If you desire a GUI client then MongoDB Compass can be directly downloaded from official website. </br>
