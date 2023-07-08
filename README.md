@@ -64,7 +64,7 @@ https://www.mongodb.com/try/download/compass
 
 ## Installing PostgreSQL and it's Python drivers
 An excellent guide for installation and running of PostgresSQL can be found at 
-[https://docs.fedoraproject.org/en-US/quick-docs/postgresql/](https://docs.fedoraproject.org/en-US/quick-docs/postgresql/)
+[https://docs.fedoraproject.org/en-US/quick-docs/postgresql/](https://docs.fedoraproject.org/en-US/quick-docs/postgresql/)</br>
 Note: you will also have to follow the steps in guide to change your `/var/lib/psql/data/pg_hba.conf` to resolve `ident` issue
 
 ### Installing psycopg2 driver for connecting postgres to python
