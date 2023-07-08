@@ -41,23 +41,41 @@ Next time if you wish to run the container you would have to use
 podman start mongo
 ```
 
-### ------- DOWNLOAD Mongosh or MongoDB Compass ---------
-### Download the Mongosh client from official website
+### Installing and running Mongosh client
+#### Download Mongosh client
 ```
 wget https://downloads.mongodb.com/compass/mongosh-1.8.2-linux-x64.tgz
 ```
 
-### Untar the file
+#### Untar the file
 ```
 tar -xvzf mongosh-1.8.2-linux-x64.tgz
 ```
 
-### Run the Mongo client
+#### Running the client
 ```
 cd mongosh-1.8.2-linux-x64/bin && ./mongosh
 ```
 
-### Download MongoDB Compass
+### Installing MongoDB Compass
 If you desire a GUI client then MongoDB Compass can be directly downloaded from official website. </br>
 Select RedHat and download the RPM package and install it
 https://www.mongodb.com/try/download/compass
+
+## Installing PostgreSQL and it's Python drivers
+An excellent guide for installation and running of PostgresSQL can be found at 
+[https://docs.fedoraproject.org/en-US/quick-docs/postgresql/](https://docs.fedoraproject.org/en-US/quick-docs/postgresql/)
+
+### Installing psycopg2 driver for connecting postgres to python
+If you directly install the driver from pip you are going to run into compilation issues. We must first install the necessary dev packages in order to build the psycopg2
+```bash
+sudo dnf install libpq-devel python3-devel postgresql-devel
+```
+Now after installing the necessary build dependencies we are ready to install our python driver for postgres
+```bash
+pip3 install psycopg2
+```
+Incase if the above still fails THEN we will install the binary of the driver
+```bash
+pip3 install psycopg2-binary
+```
