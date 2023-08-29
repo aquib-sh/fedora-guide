@@ -3,6 +3,30 @@ Guide to perform some useful tasks in Fedora
 
 <b> Note</b>: Commands related to system edit and update or anything to do outside `/home` should be assumed to be executed by root (preferred way) or by prepending a sudo before each command.
 
+### Speedup DNF
+Add the below two lines to the end of dnf configuration file in `/etc/dnf/dnf.conf`
+```
+max_parallel_downloads=10
+fastestmirror=True
+```
+
+### Installing Nvidia drivers
+enable RPM fusion from https://rpmfusion.org/Configuration
+```
+sudo dnf update && sudo dnf upgrade
+sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda
+```
+Now restart the system and after successful restart you must be using nvidia drivers by default<br>
+Now enter the below command to ensure that graphics don't crash after resuming from a suspend
+```
+sudo systemctl enable nvidia-{suspend,resume,hibernate}
+```
+
+### Install some useful packages
+```
+sudo dnf install vim neofetch htop gimp fira-code-fonts git gh python3-pip obs-studio gnome-disk-utility
+```
+
 ## Update GRUB
 ```
 grub2-mkconfig -o /boot/grub2/grub.cfg
