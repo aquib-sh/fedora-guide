@@ -103,4 +103,64 @@ pip3 install psycopg2
 Incase if the above still fails THEN we will install the binary of the driver
 ```bash
 pip3 install psycopg2-binary
+
+
+Here’s a **"SELinux and Tomcat Setup on Fedora"** section for your Fedora Guide README:
+
+---
+
+## **SELinux and Tomcat Setup on Fedora**
+
+When running Tomcat on Fedora with SELinux enabled, you may encounter issues starting Tomcat via `systemctl`. This is typically caused by SELinux policies blocking necessary operations. Follow these steps to configure SELinux and ensure Tomcat runs smoothly:
+
+### **1. Check SELinux Status**
+Verify if SELinux is enforcing:
+```bash
+sestatus
 ```
+
+### **2. Update SELinux Context for Tomcat**
+Set the correct SELinux context for Tomcat files:
+```bash
+sudo semanage fcontext -a -t tomcat_exec_t '/path/to/tomcat(/.*)?'
+sudo restorecon -Rv /path/to/tomcat
+```
+This ensures that all files and directories under `/path/to/tomcat` (e.g., `/opt/tomcat`) have the appropriate SELinux context.
+
+### **3. Verify File Permissions**
+Ensure all scripts, such as `startup.sh` and `catalina.sh`, have execute permissions:
+```bash
+sudo chmod +x /path/to/tomcat/bin/*.sh
+```
+
+### **4. Reload and Test**
+Reload systemd to reflect changes and start Tomcat:
+```bash
+sudo systemctl daemon-reload
+sudo systemctl start tomcat
+```
+
+### **5. Troubleshooting Denials**
+If Tomcat still doesn’t start:
+1. Check the SELinux audit logs:
+   ```bash
+   sudo ausearch -m avc -ts recent
+   ```
+2. Generate a custom SELinux policy module:
+   ```bash
+   sudo ausearch -c 'startup.sh' | audit2allow -M tomcat_policy
+   sudo semodule -i tomcat_policy.pp
+   ```
+
+### **6. Verify Tomcat Service**
+Ensure the service is running:
+```bash
+sudo systemctl status tomcat
+```
+
+### **Key Notes**
+- Always ensure the correct SELinux context (`tomcat_exec_t`) for Tomcat scripts and directories.
+- Use `audit2allow` to create tailored SELinux policies for your environment.
+- Test changes with `setenforce 0` temporarily to confirm SELinux is the issue before applying permanent fixes.
+
+---
